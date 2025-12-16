@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Davis Dixon– Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS (allowed on pro pages) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Font (optional) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-light: #f3f4f6;
+      --bg-card: #ffffff;
+      --accent: #4b6b82; /* greyish blue */
+      --accent-soft: #e2e8f0;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+    }
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-main);
+    }
+    .navbar {
+      background-color: #f9fafb;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .navbar-brand {
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+    .nav-link.active {
+      color: var(--accent) !important;
+      font-weight: 600;
+    }
+    .hero {
+      padding: 5rem 0 3rem;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.8rem;
+    }
+    .hero-title {
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+    .hero-subtitle {
+      color: var(--text-muted);
+      max-width: 34rem;
+    }
+    .btn-primary-modern {
+      background: var(--accent);
+      border-color: var(--accent);
+      border-radius: 999px;
+      padding: 0.7rem 1.8rem;
+      font-weight: 500;
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.18);
+    }
+    .btn-primary-modern:hover {
+      background: #3b5566;
+      border-color: #3b5566;
+    }
+    .btn-outline-modern {
+      border-radius: 999px;
+      padding: 0.7rem 1.6rem;
+      border-color: var(--accent-soft);
+      color: var(--text-main);
+      background-color: #ffffff;
+    }
+    .btn-outline-modern:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background-color: #f9fafb;
+    }
+    .card-modern {
+      border: 1px solid #e5e7eb;
+      border-radius: 1rem;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.05);
+    }
+    .section-title {
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .footer {
+      border-top: 1px solid #e5e7eb;
+      padding: 1.5rem 0;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Davis Dixon</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMain">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="resume.html">Résumé</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="scratch.html">Scratch Page</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="webapp.html">BYU Blackjack</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <main class="container hero">
+    <div class="row align-items-center g-4">
+      <div class="col-md-7">
+        <div class="hero-badge mb-3">
+          <span>Pre Business • BYU</span>
+        </div>
+        <h1 class="hero-title mb-3">
+          <!-- TODO: Replace with your name and focus -->
+          Hi, I’m Davis Dixon, an aspiring business student.
+        </h1>
+        <p class="hero-subtitle mb-4">
+          <!-- TODO: Short intro about you (2–3 sentences) -->
+          I study Information Systems, Marketing, and Entrepreneurship at BYU, combining data, design, and strategy
+          to learn more about the world of business. 
+        </p>
+        <div class="d-flex flex-wrap gap-3">
+          <a href="resume.html" class="btn btn-outline-modern">View my résumé</a>
+          <a href="scratch.html" class="btn btn-outline-modern">See my scratch page</a>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="card card-modern p-4">
+          <!-- TODO: Put your real image in img/ and update src -->
+          <div class="text-center mb-3">
+            <img src="img/prom1.jpg" alt="Davis Dixon" class="rounded-circle" width="110" height="110">
+          </div>
+          <h2 class="h5 text-center mb-1">Davis Dixon</h2>
+          <p class="text-center text-muted mb-3">BYU Student • Pre Business</p>
+          <ul class="list-unstyled small mb-3">
+            <!-- TODO: Customize bullet points -->
+            <li>• Interests: Golf, sports, entrepreneurship</li>
+            <li>• Skills: Excel/VBA, SQL, HTML/CSS</li>
+            <li>• Projects: Web apps, marketing projects, data dashboards</li>
+          </ul>
+          <div class="d-flex justify-content-between small text-muted">
+            <!-- TODO: Replace with your info -->
+            <span>Email: dixond15@byu.edu</span>
+            <span>Provo, UT</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Highlights section -->
+    <section class="mt-5 pt-4">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <p class="section-title mb-1">Focus</p>
+          <h2 class="h5 mb-3">What I’m learning</h2>
+          <p class="text-muted small mb-2">
+            <!-- TODO: Customize text -->
+            Coursework in databases, web development, business strategy, and entrepreneurship gives me tools to turn messy
+            problems into clear, data‑driven solutions.
+          </p>
+        </div>
+        <div class="col-md-4">
+          <p class="section-title mb-1">Strengths</p>
+          <h2 class="h5 mb-3">How I work</h2>
+          <p class="text-muted small mb-2">
+            Detail‑oriented, comfortable with numbers, and always willing to test ideas quickly and iterate
+            based on results.
+          </p>
+        </div>
+        <div class="col-md-4">
+          <p class="section-title mb-1">Next</p>
+          <h2 class="h5 mb-3">What I’m building</h2>
+          <p class="text-muted small mb-2">
+            Exploring projects that blend analytics, user experience, and simple automation to save time for
+            students, teams, and small businesses.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container d-flex justify-content-between flex-wrap gap-2">
+      <span>© <span id="year"></span> Davis Dixon</span>
+      <span class="text-muted">
+        Built for IS 201 
+      </span>
+    </div>
+  </footer>
+
+  <script>
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Scratch Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Only your custom CSS here -->
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body id="top">
+  <header class="header">
+    <div>
+      <strong>Scratch Page</strong>
+      <div style="font-size:0.85rem; color:#6b7280;">
+      </div>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="resume.html">Résumé</a>
+      <a href="webapp.html">BYU Blackjack</a>
+    </nav>
+  </header>
+
+  <main class="main-layout">
+    <!-- Div 1: golf content panel -->
+    <section class="panel">
+      <h2>Golf</h2>
+      <h3>How I approach a round</h3>
+      <p style="font-size:0.9rem; color:#4b5563;">
+        <!-- TODO: Replace with 2–3 sentences about your own golf vibe -->
+        Golf is the main way I reset during a busy semester. This page walks through how I think
+        about a round, from warm‑up to the last putt.
+
+      <h3 style="margin-top:1.1rem;">Pre‑round routine</h3>
+      <!-- Ordered list with nested unordered list -->
+      <ol>
+        <li>
+          Get ready at the range
+          <ul>
+            <li>Start with short wedges to loosen up and find contact.</li>
+            <li>Work up through the bag, finishing with the club used on the first tee.</li>
+          </ul>
+        </li>
+        <li>
+          Walk the course in your head
+          <ul>
+            <li>Pick targets that keep big numbers off the card.</li>
+            <li>Decide where “smart bogey” is better than forced hero shots.</li>
+          </ul>
+        </li>
+        <li>
+          Commit to every shot
+          <ul>
+            <li>Choose a clear target and shot shape before stepping in.</li>
+            <li>Accept whatever happens and move on to the next swing.</li>
+          </ul>
+        </li>
+      </ol>
+
+      <a class="back-to-top" href="#top">Back to top ↑</a>
+    </section>
+
+    <!-- Div 2: image + video panel, both golf themed -->
+    <section class="panel">
+      <h2>Course & Swing</h2>
+      <h3>On‑course perspective</h3>
+
+      <!-- Non‑Bootstrap image -->
+      <figure style="margin:0 0 1rem;">
+        <!-- TODO: Replace src with your own golf photo file in img/ -->
+        <img src="img/Fairway.jpg" alt="Golf course fairway"
+             style="width:100%; border-radius:0.75rem; border:1px solid #e5e7eb;">
+        <figcaption style="font-size:0.8rem; color:#6b7280; margin-top:0.25rem;">
+          A fairway that reminds me to treat each hole like a small project: plan, execute, then review.
+        </figcaption>
+      </figure>
+
+      <h3 style="margin-top:0.8rem;">Golf video</h3>
+      <div class="embed-wrapper">
+        <!-- TODO: Replace src with a golf‑related YouTube embed link you like -->
+        <iframe src="https://www.youtube.com/embed/me5gjIUe1Ks?si=G-oBn62YY9AEuJSE"
+                title="Golf video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+        </iframe>
+      </div>
+    </section>
+  </main>
+
+  <!-- Div 3: Tableau section below the grid -->
+  <section class="panel" style="margin:0 2rem 1.5rem;">
+    <h2>Golf Balls</h2>
+    <h3>Interactive Tableau view</h3>
+    <p style="font-size:0.9rem; color:#4b5563;">
+      <!-- TODO: Describe what your Tableau shows: scores by course, fairways hit, etc. -->
+      This Tableau dashboard tracks different golf ball models and their performace accfross various metrics, helping people choose what ball is best for them. 
+    </p>
+
+    <div class="embed-wrapper">
+      <!-- TODO: Replace this iframe with your actual Tableau Public embed code -->
+      <div class='tableauPlaceholder' id='viz1765917935787' style='position: relative'><noscript><a href='#'><img alt='2023 Ball Test - Scatter Plots ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;My&#47;MyGolfSpy2023BallTest-public-scatter&#47;2023BallTest-ScatterPlots&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='MyGolfSpy2023BallTest-public-scatter&#47;2023BallTest-ScatterPlots' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;My&#47;MyGolfSpy2023BallTest-public-scatter&#47;2023BallTest-ScatterPlots&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1765917935787');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1075px';vizElement.style.height='827px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1075px';vizElement.style.height='827px';} else { vizElement.style.width='100%';vizElement.style.height='877px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+    </div>
+  </section>
+
+  <footer class="page-footer">
+    Links:
+    <a href="index.html">Home</a> • <a href="resume.html">Résumé</a> • <a href="webapp.html">BYU Blackjack</a>.
+  </footer>
+</body>
+</html>
+

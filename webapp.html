@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>BYU Blackjack – Cosmo Challenge</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Everything in one page: HTML + CSS + JS -->
+  <style>
+    :root {
+      --bg: #f3f4f6;
+      --card: #ffffff;
+      --accent: #4b6b82;
+      --accent-dark: #374151;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --byu-blue: #002e5d;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      padding: 1rem 1.5rem;
+      background: linear-gradient(120deg, var(--byu-blue), #4b6b82);
+      color: #f9fafb;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    header h1 {
+      font-size: 1.25rem;
+      margin: 0;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    header nav a {
+      color: #e5e7eb;
+      font-size: 0.85rem;
+      text-decoration: none;
+      margin-left: 1rem;
+    }
+    header nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      padding: 2rem 1rem 2.5rem;
+    }
+    .game-card {
+      width: 100%;
+      max-width: 900px;
+      background-color: var(--card);
+      border-radius: 1.2rem;
+      padding: 1.75rem;
+      box-shadow: 0 22px 50px rgba(15, 23, 42, 0.12);
+      border: 1px solid #e5e7eb;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background-color: #e0f2fe;
+      color: #0369a1;
+      font-size: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+    .badge span {
+      font-weight: 600;
+      letter-spacing: 0.08em;
+    }
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .tables {
+      display: grid;
+      grid-template-columns: 1.1fr 1.1fr;
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .hand {
+      background: linear-gradient(135deg, #f9fafb, #e5e7eb);
+      border-radius: 1rem;
+      padding: 1rem 1.1rem;
+      border: 1px solid #d1d5db;
+    }
+    .hand-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+    .hand-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #4b5563;
+    }
+    .score {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .cards {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      min-height: 60px;
+    }
+    .card-chip {
+      width: 44px;
+      height: 60px;
+      border-radius: 0.6rem;
+      background-color: #ffffff;
+      box-shadow: 0 10px 20px rgba(15, 23, 42, 0.18);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.9rem;
+      position: relative;
+      border: 1px solid #e5e7eb;
+    }
+    .card-chip span.rank {
+      font-size: 1rem;
+    }
+    .card-chip span.suit {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .status-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+    }
+    .status-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .status-result {
+      font-weight: 600;
+      color: var(--accent-dark);
+    }
+
+    .controls {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    button.game-btn {
+      border: none;
+      border-radius: 999px;
+      padding: 0.65rem 1.4rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: transform 0.08s ease, box-shadow 0.08s ease, background 0.08s ease;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #f9fafb;
+      box-shadow: 0 12px 26px rgba(15, 23, 42, 0.18);
+    }
+    .btn-primary:hover {
+      background: #3b5566;
+      transform: translateY(-1px);
+      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.22);
+    }
+    .btn-secondary {
+      background: #e5e7eb;
+      color: #111827;
+    }
+    .btn-secondary:hover {
+      background: #d1d5db;
+      transform: translateY(-0.5px);
+    }
+    .btn-danger {
+      background: #fee2e2;
+      color: #b91c1c;
+    }
+    .btn-danger:hover {
+      background: #fecaca;
+    }
+
+    .scoreboard {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .scoreboard span {
+      font-weight: 600;
+      color: var(--accent-dark);
+    }
+
+    footer {
+      padding: 0.9rem 1.5rem 1.4rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      border-top: 1px solid #e5e7eb;
+      background-color: #f9fafb;
+    }
+
+    @media (max-width: 720px) {
+      .tables {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>BYU Blackjack</h1>
+      <div style="font-size:0.8rem; opacity:0.9;">
+        Play a quick hand against Cosmo and see who gets closer to 21
+      </div>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="resume.html">Résumé</a>
+      <a href="scratch.html">Scratch Page</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="game-card">
+      <div class="badge">
+        <span>IS 201 WEB APP</span>
+        <span></span>
+        <span></span>
+      </div>
+      <p class="subtitle">
+        Rules: You are the player; Cosmo is the dealer. Try to get closer to 21 than Cosmo without going over.
+        Hit to draw another card, or Stand to let Cosmo play.
+      </p>
+
+      <div class="tables">
+        <!-- Player hand -->
+        <div class="hand">
+          <div class="hand-header">
+            <div class="hand-title">You (Player)</div>
+            <div class="score">Total: <span id="playerTotal">0</span></div>
+          </div>
+          <div id="playerCards" class="cards"></div>
+        </div>
+
+        <!-- Dealer hand -->
+        <div class="hand">
+          <div class="hand-header">
+            <div class="hand-title">Cosmo (Dealer)</div>
+            <div class="score">Total: <span id="dealerTotal">0</span></div>
+          </div>
+          <div id="dealerCards" class="cards"></div>
+        </div>
+      </div>
+
+      <div class="status-row">
+        <div class="status-text">
+          Status: <span id="statusText" class="status-result">Click “New Hand” to start.</span>
+        </div>
+        <div class="scoreboard">
+          Wins: <span id="wins">0</span> • Losses: <span id="losses">0</span> • Pushes: <span id="pushes">0</span>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button id="newHandBtn" class="game-btn btn-primary">New Hand</button>
+        <button id="hitBtn" class="game-btn btn-secondary" disabled>Hit</button>
+        <button id="standBtn" class="game-btn btn-secondary" disabled>Stand</button>
+        <button id="resetScoreBtn" class="game-btn btn-danger">Reset Scoreboard</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+   
+  </footer>
+
+  <script>
+    // Basic blackjack logic (no splitting, no betting).
+    const suits = ["♠", "♥", "♦", "♣"];
+    const ranks = [
+      { label: "A", value: 11 },
+      { label: "2", value: 2 },
+      { label: "3", value: 3 },
+      { label: "4", value: 4 },
+      { label: "5", value: 5 },
+      { label: "6", value: 6 },
+      { label: "7", value: 7 },
+      { label: "8", value: 8 },
+      { label: "9", value: 9 },
+      { label: "10", value: 10 },
+      { label: "J", value: 10 },
+      { label: "Q", value: 10 },
+      { label: "K", value: 10 }
+    ];
+
+    let deck = [];
+    let playerHand = [];
+    let dealerHand = [];
+    let inRound = false;
+    let wins = 0;
+    let losses = 0;
+    let pushes = 0;
+
+    const playerCardsEl = document.getElementById("playerCards");
+    const dealerCardsEl = document.getElementById("dealerCards");
+    const playerTotalEl = document.getElementById("playerTotal");
+    const dealerTotalEl = document.getElementById("dealerTotal");
+    const statusTextEl = document.getElementById("statusText");
+
+    const newHandBtn = document.getElementById("newHandBtn");
+    const hitBtn = document.getElementById("hitBtn");
+    const standBtn = document.getElementById("standBtn");
+    const resetScoreBtn = document.getElementById("resetScoreBtn");
+
+    const winsEl = document.getElementById("wins");
+    const lossesEl = document.getElementById("losses");
+    const pushesEl = document.getElementById("pushes");
+
+    function createDeck() {
+      const newDeck = [];
+      for (const suit of suits) {
+        for (const rank of ranks) {
+          newDeck.push({ suit, label: rank.label, value: rank.value });
+        }
+      }
+      // Simple shuffle
+      for (let i = newDeck.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [newDeck[i], newDeck[j]] = [newDeck[j], newDeck[i]];
+      }
+      return newDeck;
+    }
+
+    function dealCard(hand, containerEl) {
+      if (deck.length === 0) {
+        deck = createDeck();
+      }
+      const card = deck.pop();
+      hand.push(card);
+      const cardDiv = document.createElement("div");
+      cardDiv.className = "card-chip";
+      const rankSpan = document.createElement("span");
+      rankSpan.className = "rank";
+      rankSpan.textContent = card.label;
+      const suitSpan = document.createElement("span");
+      suitSpan.className = "suit";
+      suitSpan.textContent = card.suit;
+      cardDiv.appendChild(rankSpan);
+      cardDiv.appendChild(suitSpan);
+      containerEl.appendChild(cardDiv);
+    }
+
+    function handValue(hand) {
+      let total = 0;
+      let aces = 0;
+      for (const card of hand) {
+        total += card.value;
+        if (card.label === "A") {
+          aces += 1;
+        }
+      }
+      while (total > 21 && aces > 0) {
+        total -= 10; // count Ace as 1 instead of 11
+        aces -= 1;
+      }
+      return total;
+    }
+
+    function updateTotals() {
+      playerTotalEl.textContent = handValue(playerHand);
+      dealerTotalEl.textContent = handValue(dealerHand);
+    }
+
+    function setStatus(message) {
+      statusTextEl.textContent = message;
+    }
+
+    function resetBoard() {
+      playerHand = [];
+      dealerHand = [];
+      playerCardsEl.innerHTML = "";
+      dealerCardsEl.innerHTML = "";
+      playerTotalEl.textContent = "0";
+      dealerTotalEl.textContent = "0";
+    }
+
+    function updateScoreboard() {
+      winsEl.textContent = wins;
+      lossesEl.textContent = losses;
+      pushesEl.textContent = pushes;
+    }
+
+    function startNewHand() {
+      deck = createDeck();
+      resetBoard();
+      inRound = true;
+      hitBtn.disabled = false;
+      standBtn.disabled = false;
+
+      // Initial deal: player, dealer, player, dealer
+      dealCard(playerHand, playerCardsEl);
+      dealCard(dealerHand, dealerCardsEl);
+      dealCard(playerHand, playerCardsEl);
+      dealCard(dealerHand, dealerCardsEl);
+
+      updateTotals();
+      const playerScore = handValue(playerHand);
+      const dealerScore = handValue(dealerHand);
+
+      if (playerScore === 21 && dealerScore === 21) {
+        setStatus("Double blackjack! It's a push.");
+        pushes++;
+        endRound();
+      } else if (playerScore === 21) {
+        setStatus("Blackjack! You beat Cosmo.");
+        wins++;
+        endRound();
+      } else if (dealerScore === 21) {
+        setStatus("Cosmo hits blackjack. Tough break.");
+        losses++;
+        endRound();
+      } else {
+        setStatus("Your move: Hit or Stand?");
+      }
+      updateScoreboard();
+    }
+
+    function endRound() {
+      inRound = false;
+      hitBtn.disabled = true;
+      standBtn.disabled = true;
+      updateTotals();
+      updateScoreboard();
+    }
+
+    function playerHit() {
+      if (!inRound) return;
+      dealCard(playerHand, playerCardsEl);
+      updateTotals();
+      const total = handValue(playerHand);
+      if (total > 21) {
+        setStatus("You bust. Cosmo wins this hand.");
+        losses++;
+        endRound();
+      } else if (total === 21) {
+        setStatus("Nice 21! Let's see what Cosmo does.");
+        // Player auto-stands when at 21
+        dealerTurn();
+      }
+    }
+
+    function dealerTurn() {
+      if (!inRound) return;
+      hitBtn.disabled = true;
+      standBtn.disabled = true;
+
+      // Simple dealer logic: hit until 17 or more
+      let dealerScore = handValue(dealerHand);
+      while (dealerScore < 17) {
+        dealCard(dealerHand, dealerCardsEl);
+        dealerScore = handValue(dealerHand);
+      }
+
+      const playerScore = handValue(playerHand);
+      dealerScore = handValue(dealerHand);
+      updateTotals();
+
+      if (dealerScore > 21) {
+        setStatus("Cosmo busts! You win the hand.");
+        wins++;
+      } else if (dealerScore > playerScore) {
+        setStatus("Cosmo edges you out this time.");
+        losses++;
+      } else if (dealerScore < playerScore) {
+        setStatus("You beat Cosmo! Nice hand.");
+        wins++;
+      } else {
+        setStatus("It's a push. Nobody wins.");
+        pushes++;
+      }
+      endRound();
+    }
+
+    // Event listeners
+    newHandBtn.addEventListener("click", startNewHand);
+    hitBtn.addEventListener("click", playerHit);
+    standBtn.addEventListener("click", dealerTurn);
+    resetScoreBtn.addEventListener("click", () => {
+      wins = 0;
+      losses = 0;
+      pushes = 0;
+      updateScoreboard();
+      setStatus("Scoreboard reset. Click “New Hand” to play again.");
+      resetBoard();
+      inRound = false;
+      hitBtn.disabled = true;
+      standBtn.disabled = true;
+    });
+
+    // Initial state
+    updateScoreboard();
+  </script>
+</body>
+</html>
